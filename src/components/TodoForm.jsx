@@ -19,7 +19,7 @@ export const TodoForm = (props) => {
     <div>
         <form  className="todo-form" onSubmit={handleSubmit}>
           <input type="text" placeholder='Add a todo' value={input} name='text' className='todo-input' onChange={ (e) => setInput(e.target.value)} />
-          <button className='todo-button'>Add a todo</button>
+          <button className='todo-button'>{ props.edit ? 'Update' : 'Add a todo'}</button>
         </form>
     </div>
   )
