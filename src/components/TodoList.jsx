@@ -29,11 +29,17 @@ export const TodoList = () => {
         setTodos(removeArr)
     }
 
+    const updateTodo = (todoId, newValue) => {
+        if (!newValue.text) return; 
+        console.log('inside updateTodo()')
+        setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)))
+    }
+
   return (
     <div>
         <h1>Welcome to To-Do-List App!</h1>
         <TodoForm onSubmit={addTodos}/>
-        <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo}/>
+        <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo} updateTodo={updateTodo}/>
     </div>
   )
 }

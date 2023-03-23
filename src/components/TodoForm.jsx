@@ -3,10 +3,6 @@ import React, { useState } from 'react'
 export const TodoForm = (props) => {
   const [input, setInput] = useState('') 
 
-  const handleChange = e => {
-    setInput(e.target.value)
-  }
-
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -21,7 +17,7 @@ export const TodoForm = (props) => {
   return (
     <div>
         <form  className="todo-form" onSubmit={handleSubmit}>
-          <input type="text" placeholder='Add a todo' value={input} name='text' className='todo-input' onChange={handleChange} />
+          <input type="text" placeholder='Add a todo' value={input} name='text' className='todo-input' onChange={ (e) => setInput(e.target.value)} />
           <button className='todo-button'>Add a todo</button>
         </form>
     </div>
