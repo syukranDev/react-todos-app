@@ -11,7 +11,7 @@ export const TodoForm = (props) => {
     e.preventDefault();
 
     props.onSubmit({
-      id : Math.floor(Math.random * 1000),
+      id : Math.floor(Math.random() * 100),
       text: input
     })
 

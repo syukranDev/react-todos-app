@@ -23,11 +23,17 @@ export const TodoList = () => {
         setTodos(updatedTodos)
     }
 
+    const removeTodo = id => {
+        const removeArr = [...todos].filter(todo => todo.id !== id)
+        console.log(removeArr)
+        setTodos(removeArr)
+    }
+
   return (
     <div>
         <h1>Welcome to To-Do-List App!</h1>
         <TodoForm onSubmit={addTodos}/>
-        <Todo todos={todos} completeTodo={completeTodo}/>
+        <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo}/>
     </div>
   )
 }
