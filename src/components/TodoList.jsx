@@ -20,6 +20,8 @@ export const TodoList = () => {
             }
             return todo
         })
+
+        console.log('U clicked on the todo')
         setTodos(updatedTodos)
     }
 
@@ -37,7 +39,7 @@ export const TodoList = () => {
 
   return (
     <div>
-        <h1>Welcome to To-Do-List App!</h1>
+        <h1 className='title-header'>Welcome to To-Do-List App!</h1>
         <TodoForm onSubmit={addTodos}/>
         <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo} updateTodo={updateTodo}/>
     </div>

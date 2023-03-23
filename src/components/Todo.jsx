@@ -7,7 +7,14 @@ export const Todo = ({todos, completeTodo, removeTodo, updateTodo}) => {
   const [edit, setEdit] = useState({
     id : null,
     text: ''
-  })    
+  })
+  
+  const [isClick, setClick] = useState(false)
+
+  const handleClick = () => {
+    setClick(value => !value)
+    console.log(isClick)
+  }
 
   const submitUpdate = value => {
     updateTodo(edit.id, value) 
@@ -25,7 +32,14 @@ export const Todo = ({todos, completeTodo, removeTodo, updateTodo}) => {
   return todos.map((todo, index) => (
     <div className={todo.isComplete ? 'todo row-complete' : 'todo-row'} key={index}>
 
-        <div key={todo.id} onClick={ () => completeTodo(todo.id)}> {todo.text} </div>
+        <div 
+            className={isClick === false ? '' : 'pendingTodo'}
+            key={todo.id} 
+            onClick={ () => {completeTodo(todo.id); handleClick(todo.id)}}  
+            
+        > 
+            {todo.text} |
+        </div>
         
         <div className="icons">
             <BiEdit 
@@ -39,6 +53,8 @@ export const Todo = ({todos, completeTodo, removeTodo, updateTodo}) => {
                     }
                 } 
                 className='delete-icon'
+                style ={{ color: 'red'}}
+
             />
         </div>
 
